@@ -1,0 +1,95 @@
+/* RESET Eric Meyer's - v1.0 | 20080212 */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align:baseline; background:transparent; } body { line-height:1; } ol, ul { list-style:none; } blockquote, q { quotes:none; } blockquote:before, blockquote:after, q:before, q:after { content:''; content:none; } del { text-decoration:line-through; } table { border-collapse:collapse; border-spacing:0; }
+/* remember to define focus styles! */
+:focus { outline:0; }
+/* remember to highlight inserts somehow! */
+ins { text-decoration:none; }
+/* /RESET */
+/* HTML */
+* { margin:0; padding:0; }
+html, body { height:100%; background-color:#cccccc; text-align:center; }
+html { overflow:auto; }
+body, div, dd, dl, dt, h1, h2, h3, h4, h5, h6, li, ol, span, td, th, ul { font:15px/20px Verdana, Arial, sans-serif; color:#000; }
+a { color:#ff0000; text-decoration:none; }
+a:hover, a.hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color:#0000ff; text-decoration:none; }
+img { border:none; }
+p { padding:10px 0; }
+strong, b { font-weight:bold; }
+em, i { font-style:italic; }
+h1, h2, h3, h4, h5, h6 { color:#000; font-weight:bold; padding:10px 0; }
+h1, h1 a { font-size:26px; line-height:30px; padding-top:0; }
+h2, h2 a { font-size:26px; line-height:30px; }
+h3, h3 a { font-size:22px; line-height:26px; }
+h4, h4 a { font-size:18px; line-height:22px; }
+h5, h5 a { font-size:16px; line-height:20px; }
+h6, h6 a { font-size:16px; line-height:20px; }
+table { width:100%; padding:10px 0; }
+th { font-weight:bold; }
+td, th { padding:5px; }
+ul, ol { padding:10px 10px 10px 30px; }
+ul li { padding:0 0 8px 10px; list-style:none; background:transparent url(../images/bullet.gif) 0 7px no-repeat; line-height:20px; }
+ol { font-size:13px; }
+ol li { padding:0 0 8px 0; margin:0 0 0 10px; list-style:decimal; }
+blockquote { font-size:16px; color:#76888a; line-height:24px; font-style:italic; padding:10px 0; }
+blockquote p { padding:0 }
+hr { border:0 #e2e6e6 solid; border-top-width:5px; clear:both; height:5px; margin:10px 0; }
+input[type='submit'],label,select,.pointer { cursor:pointer; }  
+input[type='text'], input[type='password'], input.inputField { border:1px solid #bccccd; width:450px; padding:2px; margin-bottom:8px; }
+textarea { border:1px solid #bccccd; display:block; margin-bottom:8px; overflow:auto; }
+select { width:200px; border:1px solid #bccccd; padding:2px; display:block; margin-bottom:8px; }
+fieldset { margin-bottom:8px; }
+label { font-weight:bold; font-size:13px; display:block; margin:0 0 2px 0; }
+label.radio { display:inline; padding-left:3px; font-size:13px; }
+
+::selection { background:#c3effd; color:#000; }
+::-moz-selection { background:#c3effd; color:#000; } 
+input:focus, select:focus, label:focus, textarea:focus, a:focus { outline:1px dotted #c3effd; }
+/* /HTML */
+/* CLASSES */
+.clear:after, .clear-left:after, .clear-right:after { clear:both; content:" "; display:block; font-size:0; height:0; visibility:hidden; }
+.clear-left:after { clear:left; }
+.clear-right:after { clear:right; }
+
+.align-left { text-align:left; }
+.align-center { text-align:center; }
+.align-right { text-align:right; }
+.float-left { float:left; }
+.float-right { float:right; }
+.inline { display:inline; }
+.alert, .required { color:#ff0000; }
+/* /CLASSES */
+/* LAYOUT */
+#layoutContainer { background:#fff; width:960px; margin:0 auto; text-align:left; height:auto !important; min-height:500px; height:500px; }
+#layout {  }
+#header { padding:40px 0; }
+
+/* This an example of navigation using a CSS sprite*/
+#nav, #nav li { padding:0; margin:0; background:none; }
+#nav { height:33px; width:960px; overflow:hidden; background:url(../images/backgrounds/nav.png) no-repeat; }
+#nav li { float:left; }
+#nav li a { background:url(../images/backgrounds/nav.png) left top no-repeat; text-indent:-9999px; display:block; height:33px; }
+
+#nav li#learning a { width:185px; background-position:0px 0px; }
+#nav li#assessment a { width:171px; background-position:-185px 0px; }
+#nav li#culture a { width:90px; background-position:-357px 0px; }
+#nav li#aligned a { width:135px; background-position:-446px 0px; }
+#nav li#personal a { width:186px; background-position:-581px 0px; }
+#nav li#operations a { width:193px; background-position:-767px 0px; }
+
+#nav li#learning a:hover { background-position:0px -66px; }
+#nav li#assessment a.on { background-position:-185px -66px; }
+#nav li#culture a.on { background-position:-357px -66px; }
+#nav li#aligned a.on { background-position:-446px -66px; }
+#nav li#personal a.on { background-position:-581px -66px; }
+#nav li#operations a.on { background-position:-767px -66px; }
+
+#nav li#learning a:hover { background-position:0px -33px; }
+#nav li#assessment a:hover { background-position:-185px -33px; }
+#nav li#culture a:hover { background-position:-357px -33px; }
+#nav li#aligned a:hover { background-position:-446px -33px; }
+#nav li#personal a:hover { background-position:-581px -33px; }
+#nav li#operations a:hover { background-position:-767px -33px; }
+
+#main { padding:0 20px 40px 20px; }
+#footer {  }
+/* /LAYOUT */
