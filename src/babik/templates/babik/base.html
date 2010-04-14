@@ -1,0 +1,119 @@
+{% load hasattr %}
+
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <title>Babik{%block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ media_url }}/babik/css/base.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ media_url }}/babik/css/controls.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ media_url }}/babik/css/controller.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ media_url }}/babik/css/browse.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ media_url }}/babik/css/nav.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ media_url }}/babik/css/playlist.css" />
+    {% block extrastyle %}{% endblock %}
+    {% block extrahead %}{% endblock %}
+</head>
+
+
+<body>
+    <div id="header">
+    {% block header %}
+        <h2><a href="/">Babik</a></h2>
+    {% endblock %}
+    </div>
+
+    <div id="controller">
+    {% block controller %}
+        {% if status %}
+        <div class="volume">
+            <span><strong>Volume:</strong> {{ status.volume }}</span>
+            &nbsp;<a href="/controller/volume_down/">-</a>&nbsp;<a href="/controller/volume_up/">+</a> 
+        </div>
+        {% endif %}
+
+        {% if currentsong %}
+            {% if currentsong|hasattr:"title" %}
+            <p class="title">
+                {{ currentsong.title|escape }} - 
+                {% if currentsong|hasattr:"album" %}
+                {{ currentsong.album|escape }}
+                {% endif %}
+            </p>
+            {% endif %}
+            {% if currentsong|hasattr:"artist" %}
+            <p class="artist">
+                {{ currentsong.artist|escape }}
+            </p>
+            {% endif %}
+        {% else %}
+            (None)
+        {% endif %}
+
+        {% if time %}
+        <div class="time">
+            <p><strong>Time: </strong> {{ time.position.0 }}:{{ time.position.1 }}/{{ time.end.0 }}:{{ time.end.1 }}</p>
+        </div>
+        {% endif %}
+    <div class="controls {% if not playlist %}disabled{% endif %}">
+        <form action="/controller/previous/" method="post">
+            <p>
+                <input type="hidden" name="next" value="{{ next }}" />
+                <input type="submit" value="&lt;&lt;" />
+            </p>
+        </form>
+
+        <form action="/controller/stop/" method="post">
+            <p>
+                <input type="hidden" name="next" value="{{ next }}" />
+                <input type="submit" value="stop" />
+            </p>
+        </form>
+
+        <form action="/controller/play/" method="post">
+            <p>
+                <input type="hidden" name="next" value="{{ next }}" />
+                <input type="submit" value="play" />
+            </p>
+        </form>
+
+        <form action="/controller/next/" method="post">
+            <p>
+                <input type="hidden" name="next" value="{{ next }}" />
+                <input type="submit" value="&gt;&gt;" />
+            </p>
+        </form>
+
+        <!--<form action="/controller/pause/" method="post">
+            <p>
+                <input type="hidden" name="next" value="{{ next }}" />
+                <input type="submit" value="pause" />Doesn't work - no touchy
+            </p>
+        </form> -->
+    </div>
+
+
+    {% endblock %}
+    </div>
+
+
+    <ul id="nav">
+        <li class="{% ifequal page "browse" %}current{% endifequal %}"><a href="/browse/">Browse</a></li>
+        <li class="{% ifequal page "playlist" %}current{% endifequal %}"><a href="/playlist/">Playlist</a></li>
+    </ul>
+
+    <div id="content">
+    {% block content %}
+    {% endblock %}
+    </div>
+
+    <div id="footer">
+    {% block footer %}
+    {% endblock %}
+    </div>
+</body>
+</html>
+

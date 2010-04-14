@@ -16,6 +16,10 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Damon Jablons', 'djablons@blenderbox.com'),
+    ('Caleb Brown', 'cbrown@blenderbox.com'),
+    ('Brett Berman' 'bberman@blenderbox.com'),
+    ('Nick Herro', 'nerro@blenderbox.com'),
+    ('Ed Menendez', 'emenendez@blenderbox.com'),
 )
 
 MANAGERS = ADMINS
@@ -111,6 +115,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     
     # Project Applications
+    'babik',
 )
 
 if DEBUG:

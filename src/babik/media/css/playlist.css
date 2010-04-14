@@ -1,0 +1,30 @@
+.clear {
+    display: block;
+    padding-bottom: 5px;
+    text-align: right;
+    }
+
+ol.playlist li {
+    padding: 2px;
+    padding-right: 5em;
+    }
+
+ol.playlist a {
+    color: #222222;
+    }
+
+ol.playlist a.delete {
+    color: red;
+    position: absolute;
+    right: 11%;
+    }
+
+ol.playlist li.playing a {
+    font-weight: bold;
+    }
+ol.playlist li.playing a.delete {
+    font-weight: normal;
+    }
+a.clear {
+    font-weight: bold;
+    }

@@ -1,0 +1,48 @@
+{% load hasattr %}
+{% extends 'babik/base.html' %}
+
+{% block extrastyle %}
+{% endblock %}
+
+{% block title %} - browse{% endblock %}
+
+{% block content %}
+{% if list %}
+    <ol class="playlist">
+    {% for item in list %}
+        <li class="{% cycle row1,row2 %}">
+            {% ifequal item.type "directory" %}
+            <a href="/browse/{{ item.directory|urlencode }}/">/{{ item.directory|escape }}/</a>
+            <form class="add" action="/controller/add/" method="post">
+                <input type="hidden" value="{{ next }}" name="next" />
+                <input type="hidden" value="{{ item.directory }}" name="path" />
+                <input type="submit" value="add" />
+            </form>
+            <form class="replace" action="/controller/replace/" method="post">
+                <input type="hidden" value="{{ next }}" name="next" />
+                <input type="hidden" value="{{ item.directory }}" name="path" />
+                <input type="submit" value="replace" />
+            </form>
+            {% else %}
+            {% if item|hasattr:"artist" %}{{ item.artist|escape }}{% endif %}
+            {% if item|hasattr:"album" %} - {{ item.album|escape }}{% endif %}
+            {% if item|hasattr:"title" %} - {{ item.title|escape }}{% endif %}
+
+            <form class="add" action="/controller/add/" method="post">
+                <input type="hidden" value="{{ next }}" name="next" />
+                <input type="hidden" value="{{ item.file }}" name="path" />
+                <input type="submit" value="add" />
+            </form>
+            <form class="replace" action="/controller/replace/" method="post">
+                <input type="hidden" value="{{ next }}" name="next" />
+                <input type="hidden" value="{{ item.file }}" name="path" />
+                <input type="submit" value="replace" />
+            </form>
+
+            {% endifequal %}
+    {% endfor %}
+    </ol>
+{% else %}
+<p>directory is empty</p>
+{% endif %}
+{% endblock %}

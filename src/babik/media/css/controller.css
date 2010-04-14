@@ -1,0 +1,70 @@
+#controller {
+    background-color: #d7dbc0;
+    color: #353630;
+    margin-bottom: 10px;
+    width: 80%;
+    min-width: 275px;
+    padding: 20px;
+    border-top: 2px solid #b5b5b5;
+    border-left: 2px solid #b5b5b5;
+    border-bottom: 3px solid #d0d0d0;
+    border-right: 3px solid #d0d0d0;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+h3.currentsong {
+    }
+p.title {
+    font-size: 1.4em;
+    }
+p.artist {
+    font-style: italic;
+    }
+p.artist {
+    padding-left: 8px;
+    }
+
+div.time {
+    margin-top: 10px;
+    }
+
+div.volume {
+    float: right;
+    width: 10em;
+    text-align: right;
+    }
+div.volume a {
+    font-size: 1.5em;
+    font-weight: bold;
+    }
+
+/* Controls */
+div.controls {
+    }
+
+div.controls form {
+    display: inline;
+    }
+
+div.controls input, div.volume a {
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    }
+div.controls input:hover, div.volume a:hover {
+    background-color: #cacfb1;
+    }
+
+div.controls input:active, div.volume a:active {
+    background-color: #cacfb1;
+    color: black;
+    }
+div.controls, div.disabled input {
+    color: #a0a0a0;
+    }
+
+div.controls {
+    margin-top: 10px;
+    }

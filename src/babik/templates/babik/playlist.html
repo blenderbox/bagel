@@ -1,0 +1,26 @@
+{% extends 'babik/base.html' %}
+
+{% block extrastyle %}
+{% endblock %}
+
+{% block title %} - playlist{% endblock %}
+
+{% block content %}
+{% if playlist %}
+    <p><a class="clear" href="/controller/clear/">clear</a></p>
+    <ol class="playlist">
+    {% for track in playlist %}
+        <li class="{% cycle row1,row2 %} {% ifequal track currentsong %}playing{% endifequal %}">
+        <a href="/controller/playid/{{ track.id }}/">
+            {% if track.artist %}{{ track.artist|escape }}{% endif %}
+            {% if track.album %}- {{ track.album|escape }}{% endif %}
+            {% if track.title %}- {{ track.title|escape }}{% endif %}
+        </a>
+        <a class="delete" href="/controller/deleteid/{{ track.id }}/">delete</a>
+        </li>
+    {% endfor %}
+    </ol>
+{% else %}
+<p>Playlist is empty</p>
+{% endif %}
+{% endblock %}
