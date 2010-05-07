@@ -4,6 +4,7 @@ from apps.abstract.models import CommonModel
 
 class Album(CommonModel):
     """
+    A group of songs
     """
     name = models.CharField(max_length=300)
     artist = models.CharField(max_length=300)
@@ -20,6 +21,7 @@ class Album(CommonModel):
 
 class Artist(CommonModel):
     """
+    The person who wrote the song
     """
     name = models.CharField(max_length=300)
     
@@ -34,6 +36,7 @@ class Artist(CommonModel):
 
 class Genre(CommonModel):
     """
+    The term used to describe a loose set of criteria for categorization forms of art or culture
     """
     name = models.CharField(max_length=300)
     
@@ -46,8 +49,19 @@ class Genre(CommonModel):
     def __unicode__(self):
         return self.name
 
+class MasterPlaylistSongs(CommonModel):
+    """
+    The history of what's currently playing
+    """
+    
+    song = models.ForeignKey('Song')
+    next_song = models.ForeignKey('Song')
+    time_played = models.DateTimeField('time played')
+    is_current = models.BooleanField('is current')
+
 class Playlist(CommonModel):
     """
+    A user generated list of songs
     """
     name = models.CharField(max_length=300)
     
@@ -59,9 +73,22 @@ class Playlist(CommonModel):
     
     def __unicode__(self):
         return self.name
-        
+
+class PlayListSong(CommonModel):
+    """
+    foo bar
+    """
+    song = models.ForeignKey('Song')
+    playlist = models.ForeignKey('Playlist')
+    order = models.PositiveIntegerField()
+    
+    def __unicode__(self):
+        return '%s - %s' % (self.playlist, self.song)
+
 class Song(CommonModel):
     """
+    How could you not know what a song is?
+    If you don't, you shouldn't be working on this
     """
     title = models.CharField(max_length=300)
     track_no = models.CharField(max_length=300)
