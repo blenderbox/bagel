@@ -54,11 +54,13 @@ PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
+STATIC_ROOT = os.path.join(MEDIA_ROOT, 'static')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/media/'
+STATIC_URL = '/media/static/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -66,7 +68,7 @@ MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '%sadmin-media/' % MEDIA_URL
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = ''
+SECRET_KEY = '_5f^c*ecga=1@=c1=e*mfo_t*a3ox9mg0yc09su9uix68*3fvb'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -115,7 +117,9 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     
     # Project Applications
-    'babik',
+    'apps.core',
+    'apps.abstract',
+    'apps.bagel',
 )
 
 if DEBUG:
