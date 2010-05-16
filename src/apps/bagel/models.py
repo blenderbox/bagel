@@ -54,8 +54,8 @@ class MasterPlaylistSongs(CommonModel):
     The history of what's currently playing
     """
     
-    song = models.ForeignKey('Song')
-    next_song = models.ForeignKey('Song')
+    song = models.ForeignKey(Song)
+    next_song = models.ForeignKey(Song)
     time_played = models.DateTimeField('time played')
     is_current = models.BooleanField('is current')
 
@@ -78,8 +78,8 @@ class PlayListSong(CommonModel):
     """
     foo bar
     """
-    song = models.ForeignKey('Song')
-    playlist = models.ForeignKey('Playlist')
+    song = models.ForeignKey(Song)
+    playlist = models.ForeignKey(Playlist)
     order = models.PositiveIntegerField()
     
     def __unicode__(self):
@@ -96,9 +96,9 @@ class Song(CommonModel):
     play_count = models.PositiveIntegerField()
     file_path = models.FilePathField(path=MEDIA_ROOT) #correct the filepath here
     
-    album = models.ForeignKey('Album')
-    artist = models.ForeignKey('artist')
-    genre = models.ForeignKey('genre')
+    album = models.ForeignKey(Album)
+    artist = models.ForeignKey(Artist)
+    genre = models.ForeignKey(Genre)
     
     class Meta:
         verbose_name = _("Song")
