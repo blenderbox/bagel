@@ -2,9 +2,10 @@ from django.db import models
 
 from apps.abstract.models import CommonModel
 
+
 class Album(CommonModel):
     """
-    A group of songs
+    A group of songs.
     """
     name = models.CharField(max_length=300)
     artist = models.CharField(max_length=300)
@@ -19,9 +20,10 @@ class Album(CommonModel):
     def __unicode__(self):
         return self.name
 
+
 class Artist(CommonModel):
     """
-    The person who wrote the song
+    The person who wrote the song.
     """
     name = models.CharField(max_length=300)
     
@@ -34,9 +36,11 @@ class Artist(CommonModel):
     def __unicode__(self):
         return self.name
 
+
 class Genre(CommonModel):
     """
-    The term used to describe a loose set of criteria for categorization forms of art or culture
+    The term used to describe a loose set of criteria for categorization forms 
+    of art or culture.
     """
     name = models.CharField(max_length=300)
     
@@ -51,7 +55,7 @@ class Genre(CommonModel):
 
 class MasterPlaylistSongs(CommonModel):
     """
-    The history of what's currently playing
+    The history of what's currently playing.
     """
     
     song = models.ForeignKey(Song)
@@ -59,9 +63,10 @@ class MasterPlaylistSongs(CommonModel):
     time_played = models.DateTimeField('time played')
     is_current = models.BooleanField('is current')
 
+
 class Playlist(CommonModel):
     """
-    A user generated list of songs
+    A user generated list of songs.
     """
     name = models.CharField(max_length=300)
     
@@ -74,6 +79,7 @@ class Playlist(CommonModel):
     def __unicode__(self):
         return self.name
 
+
 class PlayListSong(CommonModel):
     """
     foo bar
@@ -85,16 +91,17 @@ class PlayListSong(CommonModel):
     def __unicode__(self):
         return '%s - %s' % (self.playlist, self.song)
 
+
 class Song(CommonModel):
     """
     How could you not know what a song is?
-    If you don't, you shouldn't be working on this
+    If you don't, you shouldn't be working on this.
     """
     title = models.CharField(max_length=300)
     track_no = models.CharField(max_length=300)
     bitrate = models.CharField(max_length=50)
     play_count = models.PositiveIntegerField()
-    file_path = models.FilePathField(path=MEDIA_ROOT) #correct the filepath here
+    file_path = models.FilePathField(path=MEDIA_ROOT) # TODO: correct the filepath here
     
     album = models.ForeignKey(Album)
     artist = models.ForeignKey(Artist)
@@ -108,4 +115,6 @@ class Song(CommonModel):
     
     def __unicode__(self):
         return self.title
+
+
 
